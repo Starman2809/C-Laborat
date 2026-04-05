@@ -1,0 +1,188 @@
+﻿<Window x:Class="Lab18.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab18"
+        mc:Ignorable="d"
+        Title="Лабораторная работа 18 — Вычисление двойной суммы"
+        Height="480" Width="520"
+        MinHeight="400" MinWidth="420"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F7FA">
+
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+        </Style>
+
+        <Style x:Key="InputStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="BorderBrush" Value="#CBD5E1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок и формула -->
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+            <TextBlock Text="Вычисление двойной суммы"
+                       FontSize="20" FontWeight="Bold"
+                       Foreground="#1E293B"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,10"/>
+
+            <Border Background="White"
+                    BorderBrush="#E2E8F0" BorderThickness="1"
+                    CornerRadius="8" Padding="16,10"
+                    HorizontalAlignment="Center">
+                <TextBlock FontSize="16" FontFamily="Cambria Math"
+                           Foreground="#334155"
+                           HorizontalAlignment="Center">
+                    <Run Text="Z = Σ"/>
+                    <Run Text="(i=1..N)" FontSize="11" BaselineAlignment="Subscript"/>
+                    <Run Text=" Σ"/>
+                    <Run Text="(j=1..K)" FontSize="11" BaselineAlignment="Subscript"/>
+                    <Run Text="  pⁱ · yʲ / (i · j)"/>
+                </TextBlock>
+            </Border>
+        </StackPanel>
+
+        <!-- Поля ввода -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- N -->
+            <Border Grid.Row="0" Grid.Column="0"
+                    Background="White" CornerRadius="8"
+                    BorderBrush="#E2E8F0" BorderThickness="1"
+                    Padding="12,10">
+                <StackPanel>
+                    <TextBlock Text="N (верхний предел i)"
+                               Style="{StaticResource LabelStyle}"
+                               FontSize="13" Foreground="#64748B"
+                               Margin="0,0,0,6"/>
+                    <TextBox x:Name="TextN" Style="{StaticResource InputStyle}" Text="5"/>
+                </StackPanel>
+            </Border>
+
+            <!-- K -->
+            <Border Grid.Row="0" Grid.Column="2"
+                    Background="White" CornerRadius="8"
+                    BorderBrush="#E2E8F0" BorderThickness="1"
+                    Padding="12,10">
+                <StackPanel>
+                    <TextBlock Text="K (верхний предел j)"
+                               Style="{StaticResource LabelStyle}"
+                               FontSize="13" Foreground="#64748B"
+                               Margin="0,0,0,6"/>
+                    <TextBox x:Name="TextK" Style="{StaticResource InputStyle}" Text="5"/>
+                </StackPanel>
+            </Border>
+
+            <!-- p -->
+            <Border Grid.Row="2" Grid.Column="0"
+                    Background="White" CornerRadius="8"
+                    BorderBrush="#E2E8F0" BorderThickness="1"
+                    Padding="12,10">
+                <StackPanel>
+                    <TextBlock Text="p"
+                               Style="{StaticResource LabelStyle}"
+                               FontSize="13" Foreground="#64748B"
+                               Margin="0,0,0,6"/>
+                    <TextBox x:Name="TextP" Style="{StaticResource InputStyle}" Text="2"/>
+                </StackPanel>
+            </Border>
+
+            <!-- y -->
+            <Border Grid.Row="2" Grid.Column="2"
+                    Background="White" CornerRadius="8"
+                    BorderBrush="#E2E8F0" BorderThickness="1"
+                    Padding="12,10">
+                <StackPanel>
+                    <TextBlock Text="y"
+                               Style="{StaticResource LabelStyle}"
+                               FontSize="13" Foreground="#64748B"
+                               Margin="0,0,0,6"/>
+                    <TextBox x:Name="TextY" Style="{StaticResource InputStyle}" Text="3"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Кнопка вычисления -->
+        <Button Grid.Row="4" x:Name="BtnCalc"
+                Content="Вычислить Z"
+                Click="BtnCalc_Click"
+                FontSize="16" FontWeight="SemiBold"
+                Foreground="White"
+                Background="#3B82F6"
+                BorderThickness="0"
+                Padding="0,12"
+                Cursor="Hand"
+                HorizontalAlignment="Stretch">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="8"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#2563EB"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#1D4ED8"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <!-- Результат -->
+        <Border Grid.Row="6"
+                Background="White" CornerRadius="8"
+                BorderBrush="#E2E8F0" BorderThickness="1"
+                Padding="16,14"
+                Visibility="Collapsed"
+                x:Name="ResultPanel">
+            <StackPanel>
+                <TextBlock Text="Результат"
+                           FontSize="13" Foreground="#64748B"
+                           Margin="0,0,0,6"/>
+                <TextBlock x:Name="ResultText"
+                           FontSize="22" FontWeight="Bold"
+                           Foreground="#0F172A"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -1,3 +1,6 @@
 <Solution>
   <Project Path="Lab12Variant3/Lab12Variant3.csproj" />
+  <Project Path="Lab17/Lab17.csproj" />
+  <Project Path="Lab18/Lab18.csproj" />
+  <Project Path="Lab21/Lab21.csproj" />
 </Solution>

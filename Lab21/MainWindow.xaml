@@ -1,0 +1,136 @@
+<Window x:Class="Lab21.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab21"
+        mc:Ignorable="d"
+        Title="Автомобили"
+        Height="520" Width="480"
+        MinHeight="460" MinWidth="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#ECF0F3">
+
+    <Grid Margin="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Text="Автомобили"
+                   FontSize="18" FontWeight="Bold"
+                   Foreground="#1E293B"
+                   Margin="4,0,0,10"/>
+
+        <!-- Поля выбранного автомобиля -->
+        <Border Grid.Row="1" Background="White"
+                BorderBrush="#CBD5E1" BorderThickness="1"
+                Padding="12,10" Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="6"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Модель:"
+                           FontWeight="SemiBold" VerticalAlignment="Center"
+                           Margin="0,0,12,0"/>
+                <TextBox Grid.Row="0" Grid.Column="1"
+                         x:Name="txtModel" IsReadOnly="True"
+                         Background="#F8FAFC" BorderBrush="#E2E8F0"
+                         Padding="6,4"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Производитель:"
+                           FontWeight="SemiBold" VerticalAlignment="Center"
+                           Margin="0,0,12,0"/>
+                <TextBox Grid.Row="2" Grid.Column="1"
+                         x:Name="txtManufacturer" IsReadOnly="True"
+                         Background="#F8FAFC" BorderBrush="#E2E8F0"
+                         Padding="6,4"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Стоимость:"
+                           FontWeight="SemiBold" VerticalAlignment="Center"
+                           Margin="0,0,12,0"/>
+                <TextBox Grid.Row="4" Grid.Column="1"
+                         x:Name="txtCost" IsReadOnly="True"
+                         Background="#F8FAFC" BorderBrush="#E2E8F0"
+                         Padding="6,4"/>
+
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="Пробег:"
+                           FontWeight="SemiBold" VerticalAlignment="Center"
+                           Margin="0,0,12,0"/>
+                <TextBox Grid.Row="6" Grid.Column="1"
+                         x:Name="txtMileage" IsReadOnly="True"
+                         Background="#F8FAFC" BorderBrush="#E2E8F0"
+                         Padding="6,4"/>
+            </Grid>
+        </Border>
+
+        <!-- Список автомобилей -->
+        <ListBox Grid.Row="2" x:Name="lstCars"
+                 SelectionChanged="lstCars_SelectionChanged"
+                 Background="White"
+                 BorderBrush="#CBD5E1" BorderThickness="1"
+                 Margin="0,0,0,10"
+                 Padding="4"
+                 FontSize="13"/>
+
+        <!-- Итоговая информация -->
+        <Border Grid.Row="3" Background="White"
+                BorderBrush="#CBD5E1" BorderThickness="1"
+                Padding="12,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                           Text="Суммарная стоимость:"
+                           FontWeight="Bold" VerticalAlignment="Center"
+                           Margin="0,0,10,0"/>
+                <TextBox Grid.Row="0" Grid.Column="1"
+                         x:Name="txtTotalCost" IsReadOnly="True"
+                         Background="#F8FAFC" BorderBrush="#E2E8F0"
+                         FontWeight="Bold" Padding="6,4"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0"
+                           Text="Мин. пробег:"
+                           FontWeight="Bold" VerticalAlignment="Center"
+                           Margin="0,0,10,0"/>
+                <TextBox Grid.Row="2" Grid.Column="1"
+                         x:Name="txtMinMileage" IsReadOnly="True"
+                         Background="#F8FAFC" BorderBrush="#E2E8F0"
+                         Padding="6,4"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="0"
+                           Text="Всего автомобилей:"
+                           FontWeight="Bold" VerticalAlignment="Center"
+                           Margin="0,0,10,0"/>
+                <TextBox Grid.Row="4" Grid.Column="1"
+                         x:Name="txtCount" IsReadOnly="True"
+                         Background="#F8FAFC" BorderBrush="#E2E8F0"
+                         Padding="6,4"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
