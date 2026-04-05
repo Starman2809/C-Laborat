@@ -1,0 +1,16 @@
+## Visual Studio / VS Code
+.vs/
+*.user
+
+## Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+## NuGet
+*.nupkg
+**/packages/
+
+## Rider
+.idea/
